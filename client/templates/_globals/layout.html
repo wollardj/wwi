@@ -1,0 +1,55 @@
+<head>
+	<title>WWI Soldier Correspondence</title>
+</head>
+
+
+
+<template name="layout">
+
+	<nav class="navbar navbar-inverse navbar-fixed-top" id="wwi-nav">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button
+					type="button"
+					class="navbar-toggle"
+					data-toggle="collapse"
+					data-target="#wwi-nav-collapse"
+				>
+					<span class="icon-bar"></span>
+			        <span class="icon-bar"></span>
+			        <span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="{{urlFor 'home'}}">
+					WWI Correspondence
+				</a>
+			</div>
+
+			<div class="collapse navbar-collapse" id="wwi-nav-collapse">
+				<ul class="nav navbar-nav">
+					{{#if isInRole 'author,editor,admin'}}
+					<li>
+						<a href="{{urlFor 'records'}}">
+							<span class="glyphicon glyphicon-envelope"></span>
+							Records
+						</a>
+					</li>
+					{{/if}}
+					{{#if isAdmin}}
+					<li>
+						<a href="{{urlFor 'admin'}}">
+							<span class="glyphicon glyphicon-cog"></span>
+							Admin
+						</a>
+					</li>
+					{{/if}}
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+		            {{> loginButtons }}
+	            </ul>
+			</div>
+
+		</div>
+	</nav>
+
+	{{> yield}}
+</template>

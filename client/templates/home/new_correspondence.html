@@ -1,0 +1,214 @@
+<template name="new_correspondence">
+<form class="form" role="form">
+<div class="row">
+	<div class="col-sm-6">
+		<fieldset>
+			<legend>From:</legend>
+			<div class="checkbox">
+				<label>
+					<input type="checkbox" id="sender_is_soldier" checked /> Sender is a soldier
+				</label>
+			</div>
+			<div class="form-group{{#unless soldier_is_sender}} hidden{{/unless}}">
+				<label for="soldier_surname" class="sr-only">
+					Soldier Surname
+				</label>
+				<input
+					type="text"
+					id="soldier_surname"
+					class="form-control typeahead"
+					placeholder="Soldier's surname"
+					data-source="ac_soldier_surname" />
+			</div>
+			<div class="form-group{{#unless soldier_is_sender}} hidden{{/unless}}">
+				<label for="soldier_given_name" class="sr-only">
+					Soldier given name
+				</label>
+				<input
+					type="text"
+					id="soldier_given_name"
+					class="form-control typeahead"
+					placeholder="Soldier's given name"
+					data-source="ac_soldier_given_name" />
+			</div>
+			<div class="form-group{{#if soldier_is_sender}} hidden{{/if}}">
+				<label for="other_sender" class="sr-only">
+					Sender's name
+				</label>
+				<input
+					type="text"
+					id="other_sender"
+					class="form-control typeahead"
+					placeholder="Sender's name"
+					data-source="ac_other_sender"/>
+			</div>
+			<div class="form-group">
+				<label for="origin_address" class="sr-only">
+					Address of origin
+				</label>
+				<input
+					type="text"
+					id="origin_address"
+					class="form-control typeahead"
+					placeholder="Origin Address"
+					data-source="ac_origin_address" />
+			</div>
+		</fieldset>
+	</div>
+
+	<div class="col-sm-6">
+		<fieldset>
+			<legend>To:</legend>
+			<div class="form-group">
+				<label for="relationship" class="form-label">
+					Sender is recipient's...
+				</label>
+				<select class="form-control" id="relationship">
+					<option></option>
+					<option>husband</option>
+					<option>brother</option>
+					<option>fiancé</option>
+					<option>father</option>
+					<option>uncle</option>
+					<option>son</option>
+					<option>friend</option>
+					<option>other</option>
+				</select>
+			</div>
+			<div class="form-group">
+				<label for="recipient" class="sr-only">
+					Recipient
+				</label>
+				<input
+					type="text"
+					class="form-control typeahead"
+					id="recipient"
+					placeholder="Recpient"
+					data-source="ac_recipient" />
+			</div>
+			<div class="form-group">
+				<label for="destination_address" class="sr-only">
+					Destination Address
+				</label>
+				<input
+					type="text"
+					class="form-control typeahead"
+					id="destination_address"
+					placeholder="Destination Address"
+					data-source="ac_destination_address" />
+			</div>
+		</fieldset>
+	</div>
+
+</div>
+<div class="row">
+
+	<div class="col-sm-6">
+		<fieldset>
+			<legend>Correspondence Info</legend>
+			<div class="form-group">
+				<label for="correspondence_date" class="form-label">
+					Date of correspondence
+				</label>
+				<input
+					type="date"
+					class="form-control"
+					id="correspondence_date"
+					min="1914-07-28"
+					max="1919-01-01"
+					placeholder="Date of correspondence" />
+			</div>
+			<div class="form-group">
+				<label for="genre" class="form-label">Genre</label>
+				<select class="form-control" id="genre">
+					<option></option>
+					<option>letter</option>
+					<option>postcard</option>
+					<option>feldpost</option>
+					<option>document</option>
+				</select>
+			</div>
+			{{#if genre_is_postcard}}
+			<div class="form-group">
+				<label for="postcard_cover_description" class="form-label">
+					Postcard cover
+				</label>
+				<textarea
+					type="text"
+					class="form-control"
+					id="postcard_cover_description"
+					placeholder="Describe the cover of the postcard."></textarea>
+			</div>
+			{{/if}}
+		</fieldset>
+	</div>
+
+	<div class="col-sm-6">
+		<fieldset>
+			<legend>Postmark Info</legend>
+			<div class="form-group">
+				<label for="postmark_date" class="form-label">
+					Postmark date
+				</label>
+				<input
+					type="date"
+					class="form-control"
+					id="postmark_date"
+					min="1914-07-28"
+					max="1919-01-01"
+					placeholder="postmark date" />
+			</div>
+			<div class="form-group">
+				<label for="postmark_site" class="form-label">
+					Postmark site
+				</label>
+				<input
+					type="text"
+					class="form-control typeahead"
+					id="postmark_site"
+					placeholder="Postmark site (if any)"
+					data-source="ac_postmark_site" />
+			</div>
+		</fieldset>
+	</div>
+
+</div>
+<div class="row">
+
+	<div class="col-sm-6">
+		<fieldset>
+			<legend>Metadata</legend>
+			<div class="form-group">
+				<label for="cd_id" class="sr-only">CD ID</label>
+				<input
+					type="text"
+					class="form-control"
+					id="cd_id"
+					placeholder="CD ID" />
+			</div>
+			<div class="form-group">
+				<label for="archive_id" class="sr-only">Archive ID</label>
+				<input
+					type="text"
+					class="form-control"
+					id="archive_id"
+					placeholder="Archive ID" />
+			</div>
+		</fieldset>
+	</div>
+
+	<div class="col-sm-6">
+		<fieldset>
+			<legend>Notes</legend>
+			<label for="notes" class="sr-only">Notes</label>
+			<textarea
+				type="text"
+				class="form-control"
+				id="notes"
+				placeholder="Notes"></textarea>
+		</fieldset>
+	</div>
+
+</div>
+</form>
+</template>

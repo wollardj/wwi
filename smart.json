@@ -1,0 +1,9 @@
+{
+  "packages": {
+    "bootstrap-3": {},
+    "iron-router": {},
+    "typeahead": {},
+    "accounts-admin-ui-bootstrap-3": {},
+    "accounts-ui-bootstrap-3": {}
+  }
+}

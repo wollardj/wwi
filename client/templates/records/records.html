@@ -1,0 +1,66 @@
+<template name="records">
+    <div class="row hidden-xs">
+        <div class="col-sm-3"><h3 class="text-center">From</h3></div>
+        <div class="col-sm-3"><h3 class="text-center">To</h3></div>
+        <div class="col-sm-3"><h3 class="text-center">Postmark Info</h3></div>
+        <div class="col-sm-3"><h3 class="text-center">Meta Data</h3></div>
+    </div>
+    <div class="list-group">
+        {{#each this}}
+        <a href="#" class="list-group-item">
+            <div class="row">
+
+                <div class="col-sm-3">
+                    <span class="label label-info visible-xs-inline">From:</span>
+                    <strong>
+                    {{#if sender_is_soldier}}
+                    {{soldier_surname}}, {{soldier_given_name}}
+                    {{/if}}
+                    {{#unless sender_is_soldier}}{{other_sender}}{{/unless}}
+                    </strong>
+                    <br class="hidden-xs"/>
+                    <span class="label label-default">{{#if correspondence_date}}{{correspondence_date.toLocaleDateString}}{{/if}}{{#unless correspondence_date}}??{{/unless}}</span>
+                    {{origin_address}}
+                </div>
+
+                <div class="col-sm-3">
+                    <span class="label label-info visible-xs-inline">To:</span>
+                    <strong>{{recipient}}</strong>
+                    <em>{{#if relationship}}({{relationship}}){{/if}}</em>
+                    <br class="hidden-xs"/>
+                    {{destination_address}}
+                </div>
+
+                <div class="col-sm-3">
+                    <span class="label label-info visible-xs-inline">Postmarked:</span>
+                    {{#if postmark_site}}
+                        {{postmark_site}}
+                        <br class="hidden-xs"/>
+                    {{/if}}
+                    <small class="text-muted">
+                    {{postmark_date.toLocaleDateString}}
+                    </small>
+                </div>
+
+                <div class="col-sm-3">
+                    <ul class="list-unstyled">
+                    <li>
+                        <span class="
+                            label label-info
+                            visible-xs-inline">Meta:</span>
+                        {{genre}}
+                        <small class="text-muted">
+                            {{postcard_cover_description}}
+                        </small>
+                    </li>
+                    {{#if cd_id}}<li>CDID: {{cd_id}}</li>{{/if}}
+                    {{#if archive_id}}<li>Arvhive ID: {{archive_id}}</li>{{/if}}
+                    {{#if notes}}<li class="small text-muted">{{notes}}</li>{{/if}}
+                    </ul>
+                </div>
+
+            </div>
+        </a>
+        {{/each}}
+    </div>
+</template>

@@ -1,0 +1,23 @@
+<template name="admin">
+    <div class="container-fluid">
+    {{#if isAdmin}}
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4>User Management</h4>
+                </div>
+                <div class="panel-body"></div>
+                {{> accountsAdmin}}
+            </div>
+    {{/if}}
+    {{#unless isAdmin}}
+        <div class="panel panel-danger">
+            <div class="panel-heading">Access Denied</div>
+            <div class="panel-body">
+                <p class="lead text-center text-danger">
+                    You must be an administrator to access this page.
+                </p>
+            </div>
+        </div>
+    {{/unless}}
+    </div>
+</template>

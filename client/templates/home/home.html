@@ -1,0 +1,114 @@
+<template name="home">
+
+	<div class="jumbotron text-center dollard-jumbotron">
+		{{#if isInRole 'author,editor,admin'}}
+		<nav class="home-nav">
+			<a href="#" class="btn btn-default btn-sm" data-toggle="modal" id="data-entry-btn" data-target="#data-entry">
+				Data Entry
+			</a>
+		</nav>
+		{{/if}}
+		<h1 class="text-center">WWI Soldier Correspondence Database</h1>
+		<p class="lead text-muted">
+			{{total_letters}} records maintained by <a href="mailto:dollard@denison.edu">Catherine Dollard, Ph.D.</a>, et al.
+		</p>
+	</div>
+
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-4">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h5>
+							<span class="glyphicon glyphicon-user"></span>
+							Frequently Referenced People
+						</h5>
+					</div>
+					<ul class="list-group">
+						{{#each top_10_people}}
+						<li class="list-group-item">
+							{{name}} <span class="badge pull-right">{{value}}</span>
+						</li>
+						{{/each}}
+					</ul>
+				</div>
+			</div>
+
+
+			<div class="col-xs-4">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h5>
+							<span class="glyphicon glyphicon-tree-conifer"></span>
+							Frequently Referenced Origins
+						</h5>
+					</div>
+					<ul class="list-group">
+						{{#each top_10_places_of_origin}}
+						<li class="list-group-item">
+							{{name}} <span class="badge pull-right">{{value}}</span>
+						</li>
+						{{/each}}
+					</ul>
+				</div>
+			</div>
+
+
+			<div class="col-xs-4">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h5>
+							<span class="glyphicon glyphicon-calendar"></span>
+							Frequency by year
+						</h5>
+					</div>
+					<ul class="list-group">
+						{{#each letters_per_year}}
+						<li class="list-group-item">
+							{{name}} <span class="badge pull-right">{{value}}</span>
+						</li>
+						{{/each}}
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+
+	<div class="modal fade" id="data-entry">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">
+						<span aria-hidden="true">&times;</span>
+						<span class="sr-only">Close</span>
+					</button>
+					<h4 class="modal-title">New Correspondence</h4>
+				</div>
+
+
+				<div class="modal-body">
+					{{> new_correspondence}}
+				</div>
+
+
+				<div class="modal-footer">
+					<button
+						type="button"
+						class="btn btn-default"
+						data-dismiss="modal">Cancel</button>
+					<button
+						type="button"
+						class="btn btn-default"
+						id="save_close">Save &amp; Close</button>
+					<button
+						type="button"
+						class="btn btn-primary"
+						id="save_continue">Save &amp; Continue</button>
+				</div>
+			</div><!-- /.modal-content -->
+		</div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
+</template>
