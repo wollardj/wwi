@@ -12,7 +12,10 @@ Meteor.startup ()->
 	}
 
 	Router.onBeforeAction (pause)->
-		if not Meteor.user()
+		if Meteor.loggingIn()
+			this.render 'loading'
+			pause()
+		else if not Meteor.user()
 			this.render 'login'
 			pause()
 

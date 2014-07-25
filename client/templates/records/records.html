@@ -18,6 +18,7 @@
                     {{/if}}
                     {{#unless sender_is_soldier}}{{other_sender}}{{/unless}}
                     </strong>
+                    <em>{{#if relationship}}({{relationship}}){{/if}}</em>
                     <br class="hidden-xs"/>
                     <span class="label label-default">{{#if correspondence_date}}{{correspondence_date.toLocaleDateString}}{{/if}}{{#unless correspondence_date}}??{{/unless}}</span>
                     {{origin_address}}
@@ -26,7 +27,6 @@
                 <div class="col-sm-3">
                     <span class="label label-info visible-xs-inline">To:</span>
                     <strong>{{recipient}}</strong>
-                    <em>{{#if relationship}}({{relationship}}){{/if}}</em>
                     <br class="hidden-xs"/>
                     {{destination_address}}
                 </div>

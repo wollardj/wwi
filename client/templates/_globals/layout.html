@@ -21,11 +21,24 @@
 				</button>
 				<a class="navbar-brand" href="{{urlFor 'home'}}">
 					WWI Correspondence
+					<small>{{WWIVersion}}</small>
 				</a>
 			</div>
 
 			<div class="collapse navbar-collapse" id="wwi-nav-collapse">
 				<ul class="nav navbar-nav">
+					{{#if isInRole 'author,editor,admin'}}
+					<li>
+						<a 		href="#"
+								data-toggle="modal"
+								id="data-entry-btn"
+								data-target="#data-entry"
+						>
+							<span class="glyphicon glyphicon-plus-sign"></span>
+							Data Entry
+						</a>
+					</li>
+					{{/if}}
 					{{#if isInRole 'author,editor,admin'}}
 					<li>
 						<a href="{{urlFor 'records'}}">
@@ -52,4 +65,57 @@
 	</nav>
 
 	{{> yield}}
+
+
+
+
+	<div class="modal fade" id="data-entry">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<div class="modal-header">
+					<div class="btn-group btn-group-justified">
+						<div class="btn-group">
+							<button	type="button"
+									class="btn btn-primary"
+									id="save_continue"
+							>
+								<span class="glyphicon glyphicon-save"></span>
+								Save
+							</button>
+						</div>
+						<div class="btn-group">
+							<button class="btn btn-default disabled">
+								Data Entry
+							</button>
+						</div>
+						<div class="btn-group">
+							<button	type="button"
+									class="btn btn-default"
+									data-dismiss="modal"
+							>
+								<span class="glyphicon glyphicon-remove"></span>
+								Close
+							</button>
+						</div>
+					</div>
+				</div>
+
+
+				<div class="modal-body">
+					{{> new_correspondence}}
+				</div>
+
+			</div><!-- /.modal-content -->
+		</div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
+
+
+	<div class="bubblingG">
+		<span id="bubblingG_1">
+		</span>
+		<span id="bubblingG_2">
+		</span>
+		<span id="bubblingG_3">
+		</span>
+	</div>
 </template>

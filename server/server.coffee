@@ -4,6 +4,17 @@ Meteor.publish null, ->
 
 
 Meteor.startup ->
+
+    # Make sure the default roles are present.
+    for role in ['admin', 'author', 'editor']
+        try
+            Roles.createRole role
+        catch e
+            # No need to do anything there since the error likely means the role
+            # already exsits.
+
+
+    # Make sure the admin account is present.
     admin_account = {
         name: 'Administrator'
         email: 'admin@wwi.meteor.com'

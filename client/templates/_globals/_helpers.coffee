@@ -3,7 +3,10 @@ Meteor.startup ->
 
 	UI.registerHelper 'isAdmin', ->
         # check if user is an admin
-            Roles.userIsInRole Meteor.user(), ['admin']
+        Roles.userIsInRole Meteor.user(), ['admin']
+
+	UI.registerHelper 'isLoggedIn', ->
+		Meteor.user()?
 
 
 	Handlebars.registerHelper 'meteorOnline', ->

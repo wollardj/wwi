@@ -1,12 +1,15 @@
 @import 'globalVars.import.styl'
 
 html
-	background #fff url('/backgroundTile.png') repeat-x top right fixed
+	background-image url('postcard.jpg')
+	background-size cover
 
 body
-	background-color transparent
+	background-color rgba(255,255,250, 0.9)
 	position relative
 	padding-top 75px
+	margin-bottom 15px
+	box-shadow 0 5px 10px #444
 
 
 
@@ -29,10 +32,6 @@ body
 	.panel-heading
 		background linear-gradient(to bottom, rgba(30, 87, 153, 1) 0%, rgba(41, 137, 216, 1) 50%, rgba(32, 124, 202, 1) 51%, rgba(125, 185, 232, 1) 100%)
 
-
-
-#wwi-nav
-	box-shadow 0 0 15px #000
 
 
 // Typeahead classes
